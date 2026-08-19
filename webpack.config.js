@@ -10,6 +10,7 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, "dist"),
       filename: isProduction ? "[name].[contenthash].js" : "[name].js",
+      publicPath: "/",
       clean: true,
     },
     resolve: {
@@ -40,6 +41,16 @@ module.exports = (env, argv) => {
           {
             from: "public/assets",
             to: "assets",
+            noErrorOnMissing: true,
+          },
+          {
+            from: "public/_redirects",
+            to: "_redirects",
+            noErrorOnMissing: true,
+          },
+          {
+            from: "public/404.html",
+            to: "404.html",
             noErrorOnMissing: true,
           },
         ],
